@@ -56,8 +56,8 @@
     <h1>Contactez-nous</h1>
     <p class="lead">Démonstration, devis ou simple question sur Perfatch : dis-nous en un peu plus et nous te répondons rapidement.</p>
 
-    <div class="note">
-      En soumettant ce formulaire, ton client mail va s'ouvrir avec un message prérempli à destination de <strong>contact@perfatch.fr</strong> — il ne reste plus qu'à cliquer sur envoyer.
+    <div class="note" id="formNote">
+      Le message est envoyé directement depuis le site à <strong>contact@perfatch.fr</strong> — tu n'as rien d'autre à faire de ton côté.
     </div>
 
     <form id="contactForm">
@@ -125,7 +125,8 @@
         <textarea id="message" name="message" required></textarea>
       </fieldset>
 
-      <button type="submit" class="btn-submit">Envoyer ma demande</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Envoyer ma demande</button>
+      <p id="formStatus" style="margin-top:14px;font-size:14px;font-weight:700;display:none;"></p>
     </form>
   </div>
 </main>
@@ -155,28 +156,47 @@
     var f = new FormData(this);
     var get = function(k){ return (f.get(k) || '').toString().trim(); };
 
-    var lines = [];
-    lines.push('Profil : ' + get('profil') + (get('profil') === 'Autre' ? ' (' + get('profilAutre') + ')' : ''));
-    if (get('profil') === 'Manager de couvoir') {
-      lines.push('Nom du couvoir : ' + get('couvoirNom'));
-      lines.push('Production annuelle de poussins : ' + get('couvoirProd'));
-    }
-    lines.push('');
-    lines.push('Nom : ' + get('nom'));
-    lines.push('Prénom : ' + get('prenom'));
-    lines.push('Adresse : ' + get('adresse'));
-    lines.push('Entreprise : ' + get('entreprise'));
-    lines.push('Téléphone : ' + get('telephone'));
-    lines.push('Email : ' + get('email'));
-    lines.push('');
-    lines.push('Type de demande : ' + get('typeDemande') + (get('typeDemande') === 'Autre' ? ' (' + get('demandeAutre') + ')' : ''));
-    lines.push('');
-    lines.push('Message :');
-    lines.push(get('message'));
+    var payload = {
+      profil: get('profil'), profilAutre: get('profilAutre'),
+      couvoirNom: get('couvoirNom'), couvoirProd: get('couvoirProd'),
+      nom: get('nom'), prenom: get('prenom'), adresse: get('adresse'),
+      entreprise: get('entreprise'), telephone: get('telephone'), email: get('email'),
+      typeDemande: get('typeDemande'), demandeAutre: get('demandeAutre'), message: get('message'),
+    };
 
-    var subject = 'Contact site Perfatch — ' + get('typeDemande') + ' — ' + get('nom') + ' ' + get('prenom');
-    var body = lines.join('\n');
-    window.location.href = 'mailto:contact@perfatch.fr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var btn = document.getElementById('submitBtn');
+    var status = document.getElementById('formStatus');
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+    status.style.display = 'none';
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function(r){ return r.json().then(function(data){ return { ok: r.ok, data: data }; }); })
+      .then(function(res){
+        status.style.display = 'block';
+        if (res.ok && res.data.ok) {
+          status.style.color = '#0a7a3d';
+          status.textContent = 'Message envoyé, merci ! Nous te répondons rapidement.';
+          document.getElementById('contactForm').reset();
+          document.querySelectorAll('.conditional').forEach(function(el){ el.classList.remove('show'); });
+        } else {
+          status.style.color = '#c0392b';
+          status.textContent = (res.data && res.data.error) || 'Une erreur est survenue, réessaie ou écris-nous à contact@perfatch.fr.';
+        }
+      })
+      .catch(function(){
+        status.style.display = 'block';
+        status.style.color = '#c0392b';
+        status.textContent = 'Une erreur est survenue, réessaie ou écris-nous à contact@perfatch.fr.';
+      })
+      .finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'Envoyer ma demande';
+      });
   });
 </script>
 </body>
