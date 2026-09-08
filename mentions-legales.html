@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mentions légales — Perfatch</title>
+<link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
+<style>
+  :root{ --navy:#0F2744; --navy2:#1A3D6B; --cyan:#0EA5E9; --bg:#F7F9FC; --text:#1A2233; --muted:#5B6B82; --border:#E2EAF2; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);background:var(--bg);}
+  a{color:var(--cyan);text-decoration:none;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:20px 0;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .logo{background:#fff;border-radius:8px;padding:5px 12px;display:inline-flex;}
+  .logo img{height:28px;display:block;}
+  .back{color:#fff;font-size:13px;opacity:0.85;}
+  main{padding:56px 0 80px;}
+  h1{color:var(--navy);font-size:28px;margin:0 0 30px 0;}
+  h2{color:var(--navy);font-size:17px;margin:32px 0 10px 0;}
+  p,li{color:var(--muted);font-size:14px;line-height:1.7;}
+  ul{padding-left:20px;}
+  .note{background:#FFF8EE;border-left:3px solid #D4882A;border-radius:8px;padding:14px 18px;font-size:13px;color:#7a5a1a;margin:24px 0;}
+  footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:30px 0;font-size:13px;text-align:center;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" /></a>
+    <a class="back" href="/">← Retour au site</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Mentions légales</h1>
+
+    <h2>Éditeur du site</h2>
+    <p>
+      Ce site est édité à titre individuel par <strong>François Jaquemet</strong>, exerçant en nom propre.<br/>
+      Adresse : 5 résidence de Strasbourg, 49000 Angers, France.<br/>
+      Téléphone : 06 23 44 82 23<br/>
+      Email : <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a>
+    </p>
+    <div class="note">
+      L'activité est en cours d'immatriculation (auto-entreprise). Le numéro SIRET sera ajouté à cette page dès son obtention.
+    </div>
+
+    <h2>Responsable de publication</h2>
+    <p>François Jaquemet, à l'adresse ci-dessus.</p>
+
+    <h2>Hébergement</h2>
+    <p>
+      Ce site est hébergé par :<br/>
+      Vercel Inc.<br/>
+      340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis<br/>
+      <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a>
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      L'ensemble des contenus présents sur ce site (textes, logo, visuels) est la propriété de François Jaquemet, sauf mention contraire. Toute reproduction sans autorisation est interdite.
+    </p>
+
+    <h2>Application Perfatch</h2>
+    <p>
+      Ce site est une vitrine de présentation. L'application Perfatch elle-même, accessible via les boutons "Se connecter", est hébergée séparément et dispose de ses propres conditions d'utilisation et politique de confidentialité, communiquées à ses utilisateurs lors de la création de leur compte.
+    </p>
+
+    <h2>Contact</h2>
+    <p>Pour toute question relative à ce site : <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a></p>
+  </div>
+</main>
+<footer>© <span id="year"></span> Perfatch</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

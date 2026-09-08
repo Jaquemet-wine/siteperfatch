@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Politique de confidentialité — Perfatch</title>
+<link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
+<style>
+  :root{ --navy:#0F2744; --navy2:#1A3D6B; --cyan:#0EA5E9; --bg:#F7F9FC; --text:#1A2233; --muted:#5B6B82; --border:#E2EAF2; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);background:var(--bg);}
+  a{color:var(--cyan);text-decoration:none;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:20px 0;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .logo{background:#fff;border-radius:8px;padding:5px 12px;display:inline-flex;}
+  .logo img{height:28px;display:block;}
+  .back{color:#fff;font-size:13px;opacity:0.85;}
+  main{padding:56px 0 80px;}
+  h1{color:var(--navy);font-size:28px;margin:0 0 30px 0;}
+  h2{color:var(--navy);font-size:17px;margin:32px 0 10px 0;}
+  p,li{color:var(--muted);font-size:14px;line-height:1.7;}
+  ul{padding-left:20px;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);color:var(--muted);}
+  th{color:var(--navy);font-weight:700;}
+  footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:30px 0;font-size:13px;text-align:center;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" /></a>
+    <a class="back" href="/">← Retour au site</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Politique de confidentialité</h1>
+    <p>Dernière mise à jour : <span id="date"></span></p>
+
+    <h2>Champ de cette politique</h2>
+    <p>
+      Cette page concerne uniquement le site vitrine <strong>perfatch.site</strong>. L'application Perfatch elle-même (accessible en cliquant sur "Se connecter") est un service séparé, avec sa propre politique de confidentialité communiquée à ses utilisateurs lors de la création de leur compte.
+    </p>
+
+    <h2>Cookies et traceurs</h2>
+    <p>
+      Ce site vitrine n'utilise <strong>aucun cookie</strong> et ne dépose aucun traceur (pas d'outil de statistiques, pas de publicité). Aucun consentement n'est donc requis à ce stade. Si un outil de mesure d'audience était ajouté plus tard, cette page serait mise à jour et un bandeau de consentement serait affiché.
+    </p>
+
+    <h2>Données collectées</h2>
+    <p>Ce site ne comporte pas de formulaire. Les seules données personnelles susceptibles d'être traitées sont celles que tu transmets volontairement en nous contactant :</p>
+    <table>
+      <tr><th>Donnée</th><th>Finalité</th><th>Base légale</th><th>Durée de conservation</th></tr>
+      <tr><td>Adresse email (si tu écris à contact@perfatch.fr)</td><td>Répondre à ta demande</td><td>Intérêt légitime</td><td>Durée nécessaire à l'échange, puis suppression</td></tr>
+    </table>
+
+    <h2>Destinataires</h2>
+    <p>Ces données ne sont ni vendues ni transmises à des tiers. Elles sont uniquement consultées par François Jaquemet pour répondre à ta demande.</p>
+
+    <h2>Hébergement</h2>
+    <p>Le site est hébergé par Vercel Inc. (États-Unis). L'hébergeur peut traiter des données techniques de connexion (adresse IP, logs serveur) dans le cadre normal du fonctionnement du service, conformément à sa propre politique de confidentialité.</p>
+
+    <h2>Tes droits</h2>
+    <p>Conformément au RGPD, tu disposes d'un droit d'accès, de rectification, d'effacement et d'opposition sur tes données personnelles. Pour l'exercer, écris à <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a>.</p>
+    <p>Tu peux également introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>).</p>
+
+    <h2>Contact</h2>
+    <p>Pour toute question relative à cette politique : <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a></p>
+  </div>
+</main>
+<footer>© <span id="year"></span> Perfatch</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('date').textContent = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+</script>
+</body>
+</html>
