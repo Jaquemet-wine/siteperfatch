@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Perfatch — Logiciel de performance pour couvoirs</title>
+<meta name="description" content="Perfatch aide les couvoirs à piloter leur éclosabilité, détecter les causes de perte et améliorer leur rentabilité." />
+<style>
+  :root{
+    --navy:#0F2744; --navy2:#1A3D6B; --cyan:#0EA5E9; --cyan2:#38BDF8;
+    --bg:#F7F9FC; --text:#1A2233; --muted:#5B6B82; --border:#E2EAF2;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);background:var(--bg);}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+
+  /* Header */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,39,68,0.55);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.08);}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:#fff;text-decoration:none;}
+  .logo .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--cyan),var(--cyan2));display:flex;align-items:center;justify-content:center;font-size:18px;}
+  nav.links{display:flex;align-items:center;gap:32px;}
+  nav.links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:600;}
+  nav.links a:hover{color:#fff;}
+  .btn-login{background:var(--cyan);color:#fff !important;padding:10px 22px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:background .15s;}
+  .btn-login:hover{background:var(--cyan2);}
+  .navToggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+
+  /* Hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+  .hero video{position:absolute;top:50%;left:50%;width:100%;height:100%;object-fit:cover;transform:translate(-50%,-50%);z-index:0;}
+  .hero .overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,17,32,0.88) 0%,rgba(15,39,68,0.78) 45%,rgba(10,28,50,0.72) 100%);z-index:1;}
+  .hero .content{position:relative;z-index:2;padding:160px 0 100px;width:100%;}
+  .eyebrow{display:inline-block;color:var(--cyan2);font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+  .hero h1{color:#fff;font-size:52px;line-height:1.12;font-weight:800;margin:0 0 22px 0;max-width:720px;}
+  .hero h1 .accent{color:var(--cyan2);}
+  .hero p.lead{color:rgba(255,255,255,0.82);font-size:18px;line-height:1.6;max-width:560px;margin:0 0 36px 0;}
+  .hero .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{background:var(--cyan);color:#fff;padding:15px 30px;border-radius:10px;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(14,165,233,0.35);transition:transform .15s,background .15s;}
+  .btn-primary:hover{background:var(--cyan2);transform:translateY(-1px);}
+  .btn-ghost{background:rgba(255,255,255,0.08);color:#fff;padding:15px 30px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid rgba(255,255,255,0.25);transition:background .15s;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.16);}
+  .hero .stats{display:flex;gap:48px;margin-top:64px;flex-wrap:wrap;}
+  .hero .stats .stat b{display:block;color:#fff;font-size:30px;font-weight:800;}
+  .hero .stats .stat span{color:rgba(255,255,255,0.65);font-size:13px;}
+  .scrollcue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,0.6);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .scrollcue .chevron{width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);animation:bounce 2s infinite;}
+  @keyframes bounce{0%,100%{transform:translateY(0) rotate(45deg);}50%{transform:translateY(6px) rotate(45deg);}}
+
+  /* Sections */
+  section{padding:100px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px auto;}
+  .section-head .eyebrow{color:var(--cyan);}
+  .section-head h2{font-size:34px;font-weight:800;color:var(--navy);margin:0 0 14px 0;}
+  .section-head p{color:var(--muted);font-size:16px;line-height:1.6;margin:0;}
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .feature-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 28px;}
+  .feature-card .icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;}
+  .feature-card h3{font-size:18px;font-weight:800;color:var(--navy);margin:0 0 10px 0;}
+  .feature-card p{color:var(--muted);font-size:14px;line-height:1.65;margin:0;}
+
+  .howitworks{background:#fff;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:20px;}
+  .step{position:relative;padding-left:56px;}
+  .step .num{position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;}
+  .step h4{font-size:16px;font-weight:800;color:var(--navy);margin:0 0 8px 0;}
+  .step p{color:var(--muted);font-size:14px;line-height:1.6;margin:0;}
+
+  .cta-band{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:24px;padding:64px 48px;text-align:center;}
+  .cta-band h2{color:#fff;font-size:30px;font-weight:800;margin:0 0 14px 0;}
+  .cta-band p{color:rgba(255,255,255,0.75);font-size:15px;margin:0 0 30px 0;}
+
+  footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:40px 0;font-size:13px;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer a{color:rgba(255,255,255,0.75);text-decoration:none;}
+
+  @media (max-width:860px){
+    nav.links{position:fixed;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:flex-start;padding:20px 24px;gap:18px;display:none;}
+    nav.links.open{display:flex;}
+    .navToggle{display:block;}
+    .hero h1{font-size:36px;}
+    .hero p.lead{font-size:16px;}
+    .features,.steps{grid-template-columns:1fr;}
+    .cta-band{padding:44px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="mark">🐣</span>
+      Perfatch
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#comment-ca-marche">Comment ça marche</a>
+      <a href="#contact">Contact</a>
+      <a class="btn-login" href="https://perfatch.fr" style="display:inline-block;">Se connecter</a>
+    </nav>
+    <button class="navToggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<div id="top" class="hero">
+  <video autoplay muted loop playsinline id="heroVideo">
+    <source src="/assets/hero-video.mp4" type="video/mp4" />
+  </video>
+  <div class="overlay"></div>
+  <div class="wrap content">
+    <span class="eyebrow">Logiciel de performance pour couvoirs</span>
+    <h1>2 points d'éclosabilité, c'est <span class="accent">des milliers de poussins</span> par semaine.</h1>
+    <p class="lead">Perfatch centralise toutes tes données d'incubation, détecte automatiquement les causes de perte et te sort un rapport complet en un clic — pour que chaque lot soit meilleur que le précédent.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://perfatch.fr">Se connecter</a>
+      <a class="btn-ghost" href="#fonctionnalites">Découvrir Perfatch</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>100%</b><span>Données centralisées, lot par lot</span></div>
+      <div class="stat"><b>1 clic</b><span>Rapport PDF complet</span></div>
+      <div class="stat"><b>Temps réel</b><span>Suivi de l'éclosabilité</span></div>
+    </div>
+  </div>
+  <div class="scrollcue">Découvrir<div class="chevron"></div></div>
+</div>
+
+<section id="fonctionnalites">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Fonctionnalités</span>
+      <h2>Tout ce qu'il faut pour piloter ton couvoir</h2>
+      <p>Perfatch remplace les tableurs éparpillés par un outil unique, pensé pour le terrain.</p>
+    </div>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">📊</div>
+        <h3>Données centralisées</h3>
+        <p>Températures, progression horaire d'éclosion, pesées, nécropsies : tout est saisi, stocké et accessible en temps réel, lot par lot.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔎</div>
+        <h3>Analyses qui trouvent la cause</h3>
+        <p>Courbes de tendance, comparaisons entre lots, tests statistiques intégrés (ANOVA, corrélation) pour savoir si le problème vient de la température, de l'humidité ou de l'âge du parquet.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🏆</div>
+        <h3>Comparaison aux référentiels</h3>
+        <p>Éclosabilité, mortalité embryonnaire par stade, perte de poids : chaque résultat est comparé automatiquement aux références du fournisseur de souche, par âge de parquet.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🏢</div>
+        <h3>Multi-couvoirs</h3>
+        <p>Chaque site a ses propres données, isolées et sécurisées — piloté depuis un seul compte administrateur si tu gères plusieurs couvoirs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📄</div>
+        <h3>Export PDF, Excel, CSV</h3>
+        <p>Feuilles de qualité, synthèses de lot, rapports d'analyse : générés automatiquement, prêts à partager avec ton équipe ou ton fournisseur de souche.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>Données sécurisées</h3>
+        <p>Authentification réelle, isolation stricte entre couvoirs, données hébergées de façon sécurisée — tes données restent les tiennes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comment-ca-marche" class="howitworks">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2>Opérationnel en trois étapes</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Tu saisis tes données</h4>
+        <p>Depuis l'incubateur ou l'éclosoir, directement sur le terrain — mobile ou ordinateur.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Perfatch analyse</h4>
+        <p>Calculs automatiques, comparaison aux références, détection des anomalies pendant que tu travailles.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Tu décides plus vite</h4>
+        <p>Rapport en un clic, cause identifiée, action corrective avant le lot suivant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Prêt à voir Perfatch chez toi ?</h2>
+      <p>Connecte-toi si tu as déjà un compte, ou contacte-nous pour une démonstration.</p>
+      <div class="cta-row" style="justify-content:center;display:flex;gap:16px;flex-wrap:wrap;">
+        <a class="btn-primary" href="https://perfatch.fr">Se connecter</a>
+        <a class="btn-ghost" href="mailto:contact@perfatch.fr">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Perfatch — Hatchery Performance Software</span>
+    <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var v = document.getElementById('heroVideo');
+  if (v) { v.playbackRate = 0.25; v.addEventListener('loadedmetadata', function(){ v.playbackRate = 0.25; }); }
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){ links.classList.toggle('open'); });
+</script>
+
+</body>
+</html>
