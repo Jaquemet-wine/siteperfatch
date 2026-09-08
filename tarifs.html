@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tarifs — Perfatch</title>
+<meta name="description" content="Tarifs Perfatch : mise en place, abonnement annuel selon le volume de production, coaching et analyse. Une offre simple et transparente." />
+<link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
+<style>
+  :root{ --navy:#0F2744; --navy2:#1A3D6B; --cyan:#0EA5E9; --cyan2:#38BDF8; --bg:#F7F9FC; --text:#1A2233; --muted:#5B6B82; --border:#E2EAF2; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);background:var(--bg);}
+  a{color:var(--cyan);text-decoration:none;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:20px 0;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .logo{background:#fff;border-radius:8px;padding:5px 12px;display:inline-flex;}
+  .logo img{height:28px;display:block;}
+  .back{color:#fff;font-size:13px;opacity:0.85;}
+  main{padding:56px 0 90px;}
+  h1{color:var(--navy);font-size:32px;margin:0 0 10px 0;text-align:center;}
+  .lead{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 46px 0;text-align:center;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:30px 32px;margin-bottom:26px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;}
+  .num{flex:0 0 auto;width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;}
+  .card .body{flex:1 1 260px;}
+  .card h2{margin:0 0 4px 0;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;color:var(--navy);font-weight:800;}
+  .card p{margin:8px 0 0 0;color:var(--muted);font-size:14px;line-height:1.6;}
+  .price-box{flex:0 0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 26px;text-align:center;min-width:160px;}
+  .price-box .tag{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
+  .price-box .amount{color:var(--cyan);font-size:24px;font-weight:800;margin-top:4px;}
+  .price-box .note{color:var(--muted);font-size:11px;margin-top:2px;}
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);}
+  th{background:var(--navy);color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:0.4px;}
+  th:first-child{border-radius:8px 0 0 0;}
+  th:last-child{border-radius:0 8px 0 0;}
+  td{color:var(--muted);}
+  td.amount{color:var(--navy);font-weight:800;}
+  .discount-band{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:16px;padding:28px 32px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-bottom:26px;}
+  .discount-band .txt{color:#fff;flex:1 1 260px;}
+  .discount-band .txt h3{margin:0 0 6px 0;font-size:15px;font-weight:800;}
+  .discount-band .txt p{margin:0;font-size:13px;color:rgba(255,255,255,0.75);}
+  .discount-band .pcts{display:flex;gap:20px;}
+  .discount-band .pcts div{text-align:center;color:#fff;}
+  .discount-band .pcts b{display:block;font-size:22px;color:var(--cyan2);}
+  .discount-band .pcts span{font-size:11px;color:rgba(255,255,255,0.7);}
+  .example{border:1px solid var(--border);border-radius:16px;padding:30px 32px;background:#fff;}
+  .example h3{color:var(--navy);font-size:15px;font-weight:800;margin:0 0 4px 0;text-transform:uppercase;letter-spacing:0.5px;}
+  .example .vol{color:var(--cyan);font-size:26px;font-weight:800;margin:6px 0 20px 0;}
+  .example .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--muted);}
+  .example .row b{color:var(--navy);}
+  .example .row:last-child{border-bottom:none;}
+  .cta{text-align:center;margin-top:50px;}
+  .btn-primary{background:var(--cyan);color:#fff;padding:15px 32px;border-radius:10px;font-weight:800;font-size:15px;text-decoration:none;display:inline-block;}
+  .btn-primary:hover{background:var(--cyan2);}
+  .fineprint{text-align:center;color:var(--muted);font-size:12px;margin-top:16px;}
+  footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:30px 0;font-size:13px;text-align:center;}
+  @media (max-width:640px){
+    .card{flex-direction:column;}
+    .price-box{width:100%;}
+    table{font-size:12px;}
+    th,td{padding:9px 8px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" /></a>
+    <a class="back" href="/">← Retour au site</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Tarifs Perfatch</h1>
+    <p class="lead">Une offre simple, transparente et adaptée à ton couvoir.</p>
+
+    <div class="card">
+      <div class="num">01</div>
+      <div class="body">
+        <h2>Mise en place</h2>
+        <p>Configuration initiale, paramétrage aux données de ton couvoir et formation de l'équipe.</p>
+        <p style="font-size:12px;">Tarif indicatif, ajusté selon la complexité et les besoins spécifiques de la mise en place.</p>
+      </div>
+      <div class="price-box">
+        <div class="tag">Environ</div>
+        <div class="amount">1 200 €</div>
+        <div class="note">*Tarif indicatif</div>
+      </div>
+    </div>
+
+    <div class="card" style="flex-direction:column;">
+      <div style="display:flex;gap:24px;align-items:flex-start;width:100%;flex-wrap:wrap;">
+        <div class="num">02</div>
+        <div class="body">
+          <h2>Abonnement annuel</h2>
+          <p>Accès complet à Perfatch, mises à jour incluses, support et assistance.</p>
+        </div>
+      </div>
+      <table>
+        <tr><th>Volume de production</th><th>Tarif annuel</th></tr>
+        <tr><td>&lt; 400 000 poussins / semaine</td><td class="amount">1 200 € / an</td></tr>
+        <tr><td>400 000 à 800 000 poussins / semaine</td><td class="amount">2 400 € / an</td></tr>
+        <tr><td>800 001 à 1 200 000 poussins / semaine</td><td class="amount">3 600 € / an</td></tr>
+        <tr><td>&gt; 1 200 000 poussins / semaine</td><td class="amount" style="color:var(--cyan);">Sur devis</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="num">03</div>
+      <div class="body">
+        <h2>Coaching &amp; analyse</h2>
+        <p>Accompagnement personnalisé par nos experts : analyse approfondie, recommandations et plan d'action.</p>
+      </div>
+      <div class="price-box">
+        <div class="tag">Tarif</div>
+        <div class="amount" style="font-size:18px;">Sur devis</div>
+      </div>
+    </div>
+
+    <div class="discount-band">
+      <div class="txt">
+        <h3>Multi-sites : tu gères plusieurs couvoirs ?</h3>
+        <p>Bénéficie de tarifs dégressifs selon le nombre de sites.</p>
+      </div>
+      <div class="pcts">
+        <div><b>-10%</b><span>dès le 2ᵉ site</span></div>
+        <div><b>-15%</b><span>dès le 4ᵉ site</span></div>
+      </div>
+    </div>
+
+    <div class="example">
+      <h3>Exemple concret</h3>
+      <p style="color:var(--muted);font-size:13px;margin:0 0 4px 0;">Couvoir produisant</p>
+      <div class="vol">1 000 000 poussins / semaine</div>
+      <div class="row"><span>Mise en place (~1 200 €) + abonnement annuel (3 600 €)</span><b>≈ 4 600 € la 1ʳᵉ année</b></div>
+      <div class="row"><span>À partir de la 2ᵉ année : abonnement annuel uniquement</span><b>3 600 € / an</b></div>
+    </div>
+
+    <div class="cta">
+      <a class="btn-primary" href="/contact.html">Demander un devis personnalisé</a>
+      <p class="fineprint">Tarifs indicatifs, susceptibles d'être ajustés selon les besoins spécifiques de ton couvoir.</p>
+    </div>
+  </div>
+</main>
+<footer>© <span id="year"></span> Perfatch</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
