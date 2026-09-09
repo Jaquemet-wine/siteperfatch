@@ -52,11 +52,6 @@
   .status-pill{display:inline-flex;align-items:center;gap:8px;background:#FFF6E6;border:1px solid var(--amber);border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;color:#7a5219;margin-bottom:20px;}
   .status-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);position:relative;flex:none;}
   .status-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--amber);animation:ping 1.8s ease-out infinite;}
-  .timeline{display:flex;flex-direction:column;gap:10px;}
-  .tl-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--sub);}
-  .tl-dot{width:8px;height:8px;border-radius:50%;flex:none;}
-  .tl-dot.on{background:var(--good);}
-  .tl-dot.wait{background:var(--amber);}
   @media (prefers-reduced-motion: reduce){ .status-dot::after{animation:none;} }
 
   .gallery{position:relative;}
@@ -215,14 +210,9 @@
       </div>
 
       <div class="bigcard reveal" style="transition-delay:120ms;">
-        <div class="status-pill"><span class="status-dot"></span>Réseau coupé — 3 saisies en attente</div>
+        <div class="status-pill"><span class="status-dot"></span>Réseau coupé — saisie en attente</div>
         <h3>Résiste aux coupures réseau</h3>
-        <p>Le wifi lâche en cours de saisie ? Vous continuez à travailler normalement. Tout se synchronise automatiquement dès que la connexion revient — rien n'est perdu.</p>
-        <div class="timeline">
-          <div class="tl-row"><span class="tl-dot wait"></span>Saisie enregistrée localement, en attente de réseau</div>
-          <div class="tl-row"><span class="tl-dot on"></span>Connexion revenue — synchronisation automatique</div>
-          <div class="tl-row"><span class="tl-dot on"></span>Un conflit avec une autre saisie ? Vous êtes prévenu par email, rien n'est écrasé en silence</div>
-        </div>
+        <p>Le wifi lâche en cours de saisie ? Vous continuez à travailler normalement, tout se synchronise automatiquement dès que la connexion revient — rien n'est perdu, et vous êtes prévenu par email en cas de conflit avec une autre saisie.</p>
       </div>
     </div>
   </div>
