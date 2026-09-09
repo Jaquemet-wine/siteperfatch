@@ -343,7 +343,7 @@
     function prev(){ goTo(index - 1); }
     function restart(){
       if (timer) clearInterval(timer);
-      if (!reduceMotion) timer = setInterval(next, 4500);
+      if (!reduceMotion) timer = setInterval(next, 6000);
     }
 
     document.getElementById('galleryNext').addEventListener('click', next);
