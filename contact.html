@@ -6,61 +6,32 @@
 <title>Contact — Perfatch</title>
 <meta name="description" content="Contactez Perfatch pour une démonstration, une demande de devis ou toute question sur le logiciel de performance pour couvoirs." />
 <link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
 <style>
-  :root{ --navy:#0F2744; --navy2:#1A3D6B; --cyan:#0EA5E9; --cyan2:#38BDF8; --bg:#F7F9FC; --text:#1A2233; --muted:#5B6B82; --border:#E2EAF2; }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);background:var(--bg);}
-  a{color:var(--cyan);text-decoration:none;}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
-  header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:20px 0;}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;}
-  .logo{background:#fff;border-radius:8px;padding:5px 12px;display:inline-flex;}
-  .logo img{height:28px;display:block;}
-  .back{color:#fff;font-size:13px;opacity:0.85;}
-  main{padding:56px 0 90px;}
-  h1{color:var(--navy);font-size:30px;margin:0 0 10px 0;}
-  .lead{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 40px 0;}
-  fieldset{border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin:0 0 24px 0;background:#fff;}
-  legend{font-weight:800;color:var(--navy);font-size:15px;padding:0 6px;}
-  label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:16px 0 6px 0;}
-  label:first-of-type{margin-top:4px;}
-  .hint{font-weight:400;color:var(--muted);font-size:12px;}
-  input[type=text],input[type=email],input[type=tel],input[type=number],textarea{
-    width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:8px;font-size:14px;
-    font-family:inherit;color:var(--text);background:#fbfdff;
-  }
-  input:focus,textarea:focus{outline:2px solid var(--cyan);outline-offset:1px;}
-  textarea{resize:vertical;min-height:120px;}
-  .radio-row{display:flex;flex-direction:column;gap:10px;}
-  .radio-opt{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text);font-weight:500;cursor:pointer;}
-  .radio-opt input{margin-top:3px;}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;}
-  .conditional{border-left:3px solid var(--cyan);padding-left:16px;margin-top:16px;display:none;}
-  .conditional.show{display:block;}
-  .btn-submit{background:var(--cyan);color:#fff;border:none;padding:15px 34px;border-radius:10px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 8px 24px rgba(14,165,233,0.3);}
-  .btn-submit:hover{background:var(--cyan2);}
-  .note{background:#EFF7FF;border-left:3px solid var(--cyan);border-radius:8px;padding:14px 18px;font-size:13px;color:#0a4a70;margin-bottom:30px;}
-  footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:30px 0;font-size:13px;text-align:center;}
-  @media (max-width:600px){ .grid2{grid-template-columns:1fr;} }
+  .btn-submit{background:var(--amber);color:#3A2200;border:none;padding:15px 34px;border-radius:999px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;}
+  .btn-submit:hover{background:var(--amber2);}
+  .btn-submit:disabled{opacity:0.6;cursor:default;}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" /></a>
+<header class="page-hd">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;">
+    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" style="height:30px;" /></a>
     <a class="back" href="/">← Retour au site</a>
   </div>
 </header>
-<main>
-  <div class="wrap">
-    <h1>Contactez-nous</h1>
-    <p class="lead">Démonstration, devis ou simple question sur Perfatch : dis-nous en un peu plus et nous te répondons rapidement.</p>
+<main class="page">
+  <div class="page-narrow">
+    <h1 class="reveal">Contactez-nous</h1>
+    <p class="lead reveal">Démonstration, devis ou simple question sur Perfatch : dis-nous en un peu plus et nous te répondons rapidement.</p>
 
-    <div class="note" id="formNote">
+    <div class="note-box reveal" id="formNote" style="margin-bottom:30px;">
       Le message est envoyé directement depuis le site à <strong>contact@perfatch.fr</strong> — tu n'as rien d'autre à faire de ton côté.
     </div>
 
-    <form id="contactForm">
+    <form id="contactForm" class="reveal">
       <fieldset>
         <legend>Vous êtes</legend>
         <div class="radio-row">
@@ -130,10 +101,11 @@
     </form>
   </div>
 </main>
-<footer>© <span id="year"></span> Perfatch</footer>
+<footer class="site-ft" style="text-align:center;">
+  <div class="wrap" style="justify-content:center;">© <span class="js-year"></span> Perfatch</div>
+</footer>
+<script src="/assets/js/site.js"></script>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
   function bindConditional(radioName, triggerValue, boxId, fieldIds){
     var radios = document.querySelectorAll('input[name="' + radioName + '"]');
     var box = document.getElementById(boxId);

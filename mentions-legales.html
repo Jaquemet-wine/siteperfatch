@@ -5,37 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mentions légales — Perfatch</title>
 <link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
-<style>
-  :root{ --navy:#0F2744; --navy2:#1A3D6B; --cyan:#0EA5E9; --bg:#F7F9FC; --text:#1A2233; --muted:#5B6B82; --border:#E2EAF2; }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--text);background:var(--bg);}
-  a{color:var(--cyan);text-decoration:none;}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
-  header{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:20px 0;}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;}
-  .logo{background:#fff;border-radius:8px;padding:5px 12px;display:inline-flex;}
-  .logo img{height:28px;display:block;}
-  .back{color:#fff;font-size:13px;opacity:0.85;}
-  main{padding:56px 0 80px;}
-  h1{color:var(--navy);font-size:28px;margin:0 0 30px 0;}
-  h2{color:var(--navy);font-size:17px;margin:32px 0 10px 0;}
-  p,li{color:var(--muted);font-size:14px;line-height:1.7;}
-  ul{padding-left:20px;}
-  .note{background:#FFF8EE;border-left:3px solid #D4882A;border-radius:8px;padding:14px 18px;font-size:13px;color:#7a5a1a;margin:24px 0;}
-  footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:30px 0;font-size:13px;text-align:center;}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" /></a>
+<header class="page-hd">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;">
+    <a class="logo" href="/"><img src="/assets/logo/logo-header.png" alt="Perfatch" style="height:30px;" /></a>
     <a class="back" href="/">← Retour au site</a>
   </div>
 </header>
-<main>
-  <div class="wrap">
-    <h1>Mentions légales</h1>
+<main class="page">
+  <div class="page-narrow">
+    <h1 class="reveal">Mentions légales</h1>
 
+    <div class="reveal">
     <h2>Éditeur du site</h2>
     <p>
       Ce site est édité à titre individuel par <strong>François Jaquemet</strong>, exerçant en nom propre.<br/>
@@ -43,7 +28,7 @@
       Téléphone : 06 23 44 82 23<br/>
       Email : <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a>
     </p>
-    <div class="note">
+    <div class="note-box" style="margin:24px 0;">
       L'activité est en cours d'immatriculation (auto-entreprise). Le numéro SIRET sera ajouté à cette page dès son obtention.
     </div>
 
@@ -70,9 +55,12 @@
 
     <h2>Contact</h2>
     <p>Pour toute question relative à ce site : <a href="mailto:contact@perfatch.fr">contact@perfatch.fr</a></p>
+    </div>
   </div>
 </main>
-<footer>© <span id="year"></span> Perfatch</footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<footer class="site-ft" style="text-align:center;">
+  <div class="wrap" style="justify-content:center;">© <span class="js-year"></span> Perfatch</div>
+</footer>
+<script src="/assets/js/site.js"></script>
 </body>
 </html>
