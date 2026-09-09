@@ -13,10 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            io.unobserve(entry.target);
-          }
+          entry.target.classList.toggle('in', entry.isIntersecting);
         });
       }, { threshold: 0.15 });
       revealEls.forEach(function(el){ io.observe(el); });
