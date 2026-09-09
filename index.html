@@ -38,6 +38,27 @@
   .band .stat b{display:block;font-family:'Fraunces',serif;font-weight:700;font-size:32px;color:var(--cyan);}
   .band .stat span{font-size:13px;color:rgba(255,255,255,0.72);}
 
+  .bigcards{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .bigcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px 32px;}
+  .bigcard h3{font-size:21px;font-weight:600;margin:0 0 12px 0;}
+  .bigcard p{color:var(--sub);font-size:14.5px;line-height:1.65;margin:0 0 22px 0;max-width:440px;}
+  .devices{display:flex;align-items:flex-end;gap:14px;margin-bottom:16px;}
+  .device{background:var(--bg);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--navy);}
+  .device.laptop{width:96px;height:64px;font-size:22px;}
+  .device.tablet{width:56px;height:76px;font-size:18px;}
+  .device.phone{width:34px;height:64px;font-size:14px;border-radius:8px;}
+  .badge-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--navy);}
+  .status-pill{display:inline-flex;align-items:center;gap:8px;background:#FFF6E6;border:1px solid var(--amber);border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;color:#7a5219;margin-bottom:20px;}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);position:relative;flex:none;}
+  .status-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--amber);animation:ping 1.8s ease-out infinite;}
+  .timeline{display:flex;flex-direction:column;gap:10px;}
+  .tl-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--sub);}
+  .tl-dot{width:8px;height:8px;border-radius:50%;flex:none;}
+  .tl-dot.on{background:var(--good);}
+  .tl-dot.wait{background:var(--amber);}
+  @media (prefers-reduced-motion: reduce){ .status-dot::after{animation:none;} }
+
   .gallery{position:relative;}
   .gallery-viewport{overflow:hidden;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 50px rgba(46,32,19,0.12);}
   .gallery-track{display:flex;transition:transform .5s cubic-bezier(.22,.61,.36,1);}
@@ -57,6 +78,7 @@
   @media (max-width:860px){
     .gallery-arrow{width:40px;font-size:26px;}
     .gallery-caption{padding:18px 20px;}
+    .bigcards{grid-template-columns:1fr;}
     .hero{padding-top:230px;}
     .hero-video{position:absolute;top:0;left:0;width:100%;height:230px;object-fit:cover;object-position:center 45%;transform:none;}
     .hero-overlay{height:230px;background:linear-gradient(to bottom, rgba(251,241,224,0.25) 0%, rgba(251,241,224,0.55) 65%, var(--bg) 100%);}
@@ -164,6 +186,43 @@
       <div class="card reveal" style="transition-delay:160ms;">
         <h3>Données sécurisées</h3>
         <p>Authentification réelle, isolation stricte entre couvoirs, données hébergées de façon sécurisée — vos données restent les vôtres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="acces">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Accès &amp; continuité</span>
+      <h2>Votre couvoir, avec vous, tout le temps.</h2>
+      <p>Deux garanties qui comptent sur le terrain : accéder à vos données où que vous soyez, et ne jamais perdre une saisie à cause du réseau.</p>
+    </div>
+    <div class="bigcards">
+      <div class="bigcard reveal" style="transition-delay:0ms;">
+        <div class="devices">
+          <div class="device laptop">💻</div>
+          <div class="device tablet">📱</div>
+          <div class="device phone">📲</div>
+        </div>
+        <h3>Accessible partout, avec vos identifiants</h3>
+        <p>Ordinateur, tablette ou téléphone : connectez-vous avec votre compte personnel et retrouvez toutes les données de votre couvoir — lots, chariots, historique — où que vous soyez.</p>
+        <div class="badge-row">
+          <span class="badge">Compte personnel sécurisé</span>
+          <span class="badge">Données partagées de l'équipe</span>
+          <span class="badge">Tout support</span>
+        </div>
+      </div>
+
+      <div class="bigcard reveal" style="transition-delay:120ms;">
+        <div class="status-pill"><span class="status-dot"></span>Réseau coupé — 3 saisies en attente</div>
+        <h3>Résiste aux coupures réseau</h3>
+        <p>Le wifi lâche en cours de saisie ? Vous continuez à travailler normalement. Tout se synchronise automatiquement dès que la connexion revient — rien n'est perdu.</p>
+        <div class="timeline">
+          <div class="tl-row"><span class="tl-dot wait"></span>Saisie enregistrée localement, en attente de réseau</div>
+          <div class="tl-row"><span class="tl-dot on"></span>Connexion revenue — synchronisation automatique</div>
+          <div class="tl-row"><span class="tl-dot on"></span>Un conflit avec une autre saisie ? Vous êtes prévenu par email, rien n'est écrasé en silence</div>
+        </div>
       </div>
     </div>
   </div>
