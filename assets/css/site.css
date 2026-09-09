@@ -27,7 +27,7 @@ img{max-width:100%;display:block;}
 header.site-hd{position:sticky;top:0;left:0;right:0;z-index:100;background:rgba(251,241,224,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 header.site-hd .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
 .logo{display:flex;align-items:center;text-decoration:none;}
-.logo img{height:34px;display:block;}
+.logo img{height:48px;display:block;}
 nav.links{display:flex;align-items:center;gap:30px;}
 nav.links a{color:var(--sub);text-decoration:none;font-size:14px;font-weight:700;}
 nav.links a:hover{color:var(--ink);}
