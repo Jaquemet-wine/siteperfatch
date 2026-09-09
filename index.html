@@ -38,7 +38,25 @@
   .band .stat b{display:block;font-family:'Fraunces',serif;font-weight:700;font-size:32px;color:var(--cyan);}
   .band .stat span{font-size:13px;color:rgba(255,255,255,0.72);}
 
+  .gallery{position:relative;}
+  .gallery-viewport{overflow:hidden;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 50px rgba(46,32,19,0.12);}
+  .gallery-track{display:flex;transition:transform .5s cubic-bezier(.22,.61,.36,1);}
+  .gallery-slide{flex:0 0 100%;background:var(--surface);}
+  .gallery-slide img{width:100%;display:block;border-bottom:1px solid var(--line);}
+  .gallery-caption{padding:22px 28px;}
+  .gallery-caption h3{margin:0 0 6px 0;font-size:18px;font-weight:600;}
+  .gallery-caption p{margin:0;color:var(--sub);font-size:14px;line-height:1.6;max-width:640px;}
+  .gallery-arrow{position:absolute;top:0;bottom:0;width:56px;border:none;background:transparent;color:var(--ink);font-size:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.55;transition:opacity .15s;}
+  .gallery-arrow:hover{opacity:1;}
+  .gallery-prev{left:-4px;justify-content:flex-start;}
+  .gallery-next{right:-4px;justify-content:flex-end;}
+  .gallery-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+  .gallery-dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--line);cursor:pointer;padding:0;}
+  .gallery-dots button.active{background:var(--amber);}
+
   @media (max-width:860px){
+    .gallery-arrow{width:40px;font-size:26px;}
+    .gallery-caption{padding:18px 20px;}
     .hero{padding-top:230px;}
     .hero-video{position:absolute;top:0;left:0;width:100%;height:230px;object-fit:cover;object-position:center 45%;transform:none;}
     .hero-overlay{height:230px;background:linear-gradient(to bottom, rgba(251,241,224,0.25) 0%, rgba(251,241,224,0.55) 65%, var(--bg) 100%);}
@@ -151,6 +169,65 @@
   </div>
 </section>
 
+<section id="visite">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visite guidée</span>
+      <h2>Perfatch, écran par écran</h2>
+      <p>Des captures de l'application (données de démonstration) pour voir concrètement ce que vous y faites au quotidien.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/01-dashboard.png" alt="Tableau de bord Perfatch" />
+            <div class="gallery-caption"><h3>Tableau de bord</h3><p>En un coup d'œil, l'état de tous vos lots et chariots en cours, avec l'évolution de l'éclosabilité au fil des lots.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/02-lots.png" alt="Création d'un lot" />
+            <div class="gallery-caption"><h3>Création d'un lot</h3><p>Renseignez la souche, la date de mise en incubation et le nombre d'œufs : Perfatch calcule seul les dates de transfert et d'éclosion.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/03-planning.png" alt="Planning" />
+            <div class="gallery-caption"><h3>Planning</h3><p>Toutes les échéances du mois — mises en incubation, transferts, éclosions, tâches — sur un seul calendrier.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/04-tasks.png" alt="Tâches du jour" />
+            <div class="gallery-caption"><h3>Tâches du jour</h3><p>La liste de ce qu'il y a à faire aujourd'hui, triée par heure, pour ne rien oublier sur le terrain.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/05-window.png" alt="Saisie fenêtre d'éclosion à 0h" />
+            <div class="gallery-caption"><h3>Saisie à 0h, casier par casier</h3><p>Le comptage du jour de l'éclosion, casier par casier, saisi en quelques secondes depuis le terrain.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/06-analyse.png" alt="Analyse comparative" />
+            <div class="gallery-caption"><h3>Analyse</h3><p>Comparez plusieurs chariots ou lots sur une même courbe pour repérer un écart avant qu'il ne coûte cher.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/07-tests.png" alt="Tests statistiques" />
+            <div class="gallery-caption"><h3>Tests statistiques</h3><p>Un test ANOVA en un clic pour savoir si un écart entre groupes est vraiment significatif, ou juste du bruit.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/08-aviagen.png" alt="Comparaison Ross 308" />
+            <div class="gallery-caption"><h3>Comparaison Ross 308</h3><p>Chaque indicateur du lot comparé automatiquement aux références du fournisseur de souche.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/09-necropsy.png" alt="Analyse nécropsie" />
+            <div class="gallery-caption"><h3>Nécropsie</h3><p>La répartition des causes de mortalité embryonnaire, mise en regard des références Aviagen.</p></div>
+          </div>
+          <div class="gallery-slide">
+            <img src="/assets/screenshots/gallery/10-export.png" alt="Export des données" />
+            <div class="gallery-caption"><h3>Export</h3><p>Choisissez les lots et les colonnes, et générez votre rapport PDF ou Excel en un clic.</p></div>
+          </div>
+        </div>
+      </div>
+      <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Précédent">‹</button>
+      <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="Suivant">›</button>
+      <div class="gallery-dots" id="galleryDots"></div>
+    </div>
+  </div>
+</section>
+
 <section id="comment-ca-marche">
   <div class="wrap">
     <div class="section-head reveal">
@@ -185,7 +262,7 @@
       <div class="stats">
         <div class="stat"><b>100%</b><span>Données centralisées, lot par lot</span></div>
         <div class="stat"><b>1 clic</b><span>Rapport PDF complet</span></div>
-        <div class="stat"><b>Plus vite</b><span>Réagis dès qu'un problème apparaît, pas après</span></div>
+        <div class="stat"><b>Plus vite</b><span>Réagissez dès qu'un problème apparaît, pas après</span></div>
       </div>
     </div>
   </div>
@@ -234,6 +311,46 @@
     heroVideo.playbackRate = 0.25;
     heroVideo.addEventListener('loadedmetadata', function(){ heroVideo.playbackRate = 0.25; });
   }
+
+  (function(){
+    var track = document.getElementById('galleryTrack');
+    if (!track) return;
+    var slides = track.children;
+    var n = slides.length;
+    var dotsWrap = document.getElementById('galleryDots');
+    var dots = [];
+    for (var i = 0; i < n; i++) {
+      var d = document.createElement('button');
+      d.setAttribute('aria-label', 'Aller à la capture ' + (i+1));
+      (function(idx){ d.addEventListener('click', function(){ goTo(idx); }); })(i);
+      dotsWrap.appendChild(d);
+      dots.push(d);
+    }
+    var index = 0;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer = null;
+
+    function render(){
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function(d, i){ d.classList.toggle('active', i === index); });
+    }
+    function goTo(i){
+      index = (i + n) % n;
+      render();
+      restart();
+    }
+    function next(){ goTo(index + 1); }
+    function prev(){ goTo(index - 1); }
+    function restart(){
+      if (timer) clearInterval(timer);
+      if (!reduceMotion) timer = setInterval(next, 4500);
+    }
+
+    document.getElementById('galleryNext').addEventListener('click', next);
+    document.getElementById('galleryPrev').addEventListener('click', prev);
+    render();
+    restart();
+  })();
 </script>
 </body>
 </html>
